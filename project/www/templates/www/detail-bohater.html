@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bohater</title>
+    <style>
+        .background-blur {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100vh;
+              overflow: hidden;
+              z-index: -1; 
+          }
+        .background-blur img {
+              filter: blur(2px);
+              width: 100%;
+              height: 100vh;
+              object-fit: cover;
+          }
+      
+        h2 {
+              color: #0AC8B9;
+          }
+      
+        a {
+            color: #F0E6D2;
+            text-decoration: none;
+            font-size: 20px; /* Increase font size */
+        }
+        a:hover {
+            color: #F0E6D2;
+        }
+
+        p {
+            font-size: 30px; /* Increase paragraph font size */
+        }
+      </style>
+</head>
+<body>
+    <div class="background-blur">
+        <img src="https://c4.wallpaperflare.com/wallpaper/843/827/578/video-game-league-of-legends-field-mushroom-wallpaper-preview.jpg" alt="" />
+    </div>
+    <h2>{{ bohater.imie }} {{ bohater.przydomek }}</h2>
+    <img width="300" src="{{ bohater.zdjecie.url }}" alt="">
+    {% for rola in bohater.rola.all %}
+        <a href="{% url 'detail-rola' pk=rola.id %}"><p>Rola: {{ rola.nazwa }}</p></a>
+    {% endfor %}
+    {% for linia in bohater.linia.all %}
+        <a href="{% url 'detail-linia' pk=linia.id %}"><p>Linia: {{ linia.nazwa }}</p></a>
+    {% endfor %}
+</body>
+</html>

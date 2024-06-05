@@ -1,0 +1,58 @@
+{% extends "www/base.html" %}
+
+
+
+{% block title %}Zestawienie Bohaterow{% endblock %}
+
+
+
+{% block content %}
+<style>
+    .background-blur {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          overflow: hidden;
+          z-index: -1; 
+      }
+    .background-blur img {
+          filter: blur(2px);
+          width: 100%;
+          height: 100vh;
+          object-fit: cover;
+      }
+  
+    h2 {
+          color: #0AC8B9;
+      }
+  
+    /* Change the color of clickable links */
+    a {
+        color: #C89B3C;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #C89B3C;
+    }
+  </style>
+  
+  <div class="background-blur">
+      <img src="https://c4.wallpaperflare.com/wallpaper/843/827/578/video-game-league-of-legends-field-mushroom-wallpaper-preview.jpg" alt="" />
+  </div>
+    <h2>Bohater</h2>
+
+    {% for bohater in bohater %}
+
+    
+
+    <h2><a href="{% url 'detail-bohater' pk=bohater.pk %}">{{bohater.imie}}, {{bohater.przydomek}}</a></h2>
+
+    
+
+    {% endfor %}
+
+
+
+{% endblock %}
